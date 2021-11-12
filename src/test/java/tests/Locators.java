@@ -27,32 +27,30 @@ public class Locators extends BaseTest {
         WebElement errorMessage = driver.findElement(By.xpath("//h3[@data-test='error']"));  //login page
         //Поиск по тексту, например By.xpath("//tag[text()='text']");
         WebElement thanksMessage = driver.findElement(By.xpath("//h2[text()='THANK YOU FOR YOUR ORDER']"));   //checkout-complete page
-
         //Поиск по частичному совпадению атрибута, например By.xpath("//tag[contains(@attribute,'text')]");
-
+        WebElement userNameOtherMethod = driver.findElement(By.xpath("//input[contains(@data-test,'password')]"));  //login page
+        WebElement menuButton = driver.findElement(By.xpath("//button[contains(@id,'react-burger-menu-btn')]"));  //inventory page
         //Поиск по частичному совпадению текста, например By.xpath("//tag[contains(text(),'text')]");
         WebElement usernames = driver.findElement(By.xpath("//h4[contains(text(),'Accepted usernames are:')]"));  //login page
         WebElement backpack = driver.findElement(By.xpath("//div[contains(text(),'Sauce Labs Backpack')]"));   //inventory page
-
         //ancestor, например //*[text()='Enterprise Testing']//ancestor::div
-
+        WebElement informProduct = driver.findElement(By.xpath("//div[contains(text(), 'Sauce Labs Fleece Jacket')]/ancestor::div[@class='inventory_item']")); //cart page
+        WebElement cartList = driver.findElement(By.xpath("//div[text()='Sauce Labs Fleece Jacket']/ancestor::div[@class='cart_list']")); //cart page
         //descendant
-
-        //following (false)
-        WebElement textAboutBackpack = driver.findElement(By.xpath("//div[contains(text(),'Sauce Labs Backpack')]/following-sibling::div[@class='inventory_details_desc large_size']"));  //cart page
-
+        WebElement twitterLink = driver.findElement(By.xpath("//ul[@class='social']//descendant::li[@class='social_twitter']")); //inventory page
+        //following
+        WebElement textAboutBackpack = driver.findElement(By.xpath("//a[@id='item_4_title_link']/following-sibling::div[@class='inventory_item_desc']"));  //inventory page
+        WebElement priceLowToHigh = driver.findElement(By.xpath("//span[@class='active_option']//following::option[contains(text(),'Price (low to high)')]"));  //inventory page
         //parent
-
-        //preceding (false)
-        WebElement priceBackpack = driver.findElement(By.xpath("//*[@id='remove-sauce-labs-backpack')]/preceding-sibling::div[@class='inventory_details_price']"));  //cart page
+        WebElement menuList = driver.findElement(By.xpath("//a[@class='bm-item menu-item']//parent::nav"));  //inventory page
+        WebElement socialLink = driver.findElement(By.xpath("//li[@class='social_linkedin']//parent::ul"));  //inventory page
+        //preceding
+        WebElement priceBackpack = driver.findElement(By.xpath("//button[@id='remove-sauce-labs-backpack')]/preceding-sibling::div[@class='inventory_details_price']"));  //cart page
         //*поиск элемента с условием AND, например //input[@class='_2zrpKA _1dBPDZ' and @type='text']
         WebElement continueShoppingButton = driver.findElement(By.xpath("//div[@class='btn btn_secondary back btn_medium' and @name='continue-shopping']")); //cart page
         //css
         //.class
         WebElement passwordForAllUsers = driver.findElement(By.cssSelector(".login_password")); //login page
-
-        //.class1.class2
-
         //.class1 .class2
         WebElement shoppingCart = driver.findElement(By.cssSelector(".shopping_cart_container .shopping_cart_link"));  //inventory page
         //#id
@@ -66,7 +64,7 @@ public class Locators extends BaseTest {
         //[attribute~=value]
         WebElement removeButton = driver.findElement(By.cssSelector("[id~=remove-sauce-labs-backpack]")); //cart page
         //[attribute|=value] (false)
-        WebElement firstName = driver.findElement(By.cssSelector("[placeholder|=First]")); //checkout-step-one page
+        WebElement linkedinLink = driver.findElement(By.cssSelector("[class|=social_linkedin]")); //inventory page
         //[attribute^=value]
         WebElement facebookLink = driver.findElement(By.cssSelector("a[href^='https://www.facebook.']")); //inventory page
         //[attribute$=value]
