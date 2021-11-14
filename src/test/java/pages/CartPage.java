@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class CartPage extends BasePage{
 
     private final static By SHOPPING_CART = By.cssSelector(".shopping_cart_link");
@@ -53,4 +55,11 @@ public class CartPage extends BasePage{
         WebElement itemContainer = getItemContainer(productName);
         return itemContainer.findElement(PRODUCT_NAME_LOCATOR).isDisplayed();
     }
+
+    public int getProductsCount() {
+            List<WebElement> itemCount = driver.findElements(By.cssSelector(".cart_item"));
+            int count = itemCount.size();
+            return itemCount.size();
+        }
+
 }

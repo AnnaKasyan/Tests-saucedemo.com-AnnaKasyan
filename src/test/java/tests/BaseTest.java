@@ -10,10 +10,10 @@ import pages.LoginPage;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
-    protected WebDriver driver;
-    protected LoginPage loginPage;
     final static String USERNAME = "standard_user";
     final static String PASSWORD = "secret_sauce";
+    protected WebDriver driver;
+    protected LoginPage loginPage;
 
     @BeforeClass(alwaysRun = true)
     public void setUp() {

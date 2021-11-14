@@ -7,6 +7,10 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
+    private final static String LOGIN_PAGE_URL = "https://www.saucedemo.com/";
+    private final static String INVALID_USERNAME = "user";
+    private final static String INVALID_PASSWORD = "1111";
+
     @BeforeMethod
     public void navigate() {
         loginPage.open();
@@ -16,10 +20,6 @@ public class LoginTests extends BaseTest {
     public void clearSession() {
         driver.manage().deleteAllCookies();
     }
-
-    private final static String LOGIN_PAGE_URL = "https://www.saucedemo.com/";
-    private final static String INVALID_USERNAME = "user";
-    private final static String INVALID_PASSWORD = "1111";
 
     @Test
     public void loginPositiveTest() {

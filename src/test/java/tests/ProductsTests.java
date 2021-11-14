@@ -1,5 +1,6 @@
 package tests;
 
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -8,6 +9,15 @@ import pages.CartPage;
 import pages.ProductsPage;
 
 public class ProductsTests extends BaseTest {
+
+    private final static String BACKPACK_ITEM_NAME = "Sauce Labs Backpack";
+    private final static String BACKPACK_ITEM_PRICE = "$29.99";
+    private final static String BACKPACK_ITEM_DESCRIPTION = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
+    private final static String FLEECE_JACKET_ITEM_NAME = "Sauce Labs Fleece Jacket";
+    private final static String FLEECE_JACKET_ITEM_PRICE = "$49.99";
+    private final static String FLEECE_JACKET_ITEM_DESCRIPTION = "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.";
+    protected ProductsPage productsPage;
+    protected CartPage cartPage;
 
     @BeforeMethod
     public void navigate() {
@@ -22,40 +32,28 @@ public class ProductsTests extends BaseTest {
         driver.manage().deleteAllCookies();
     }
 
-    protected ProductsPage productsPage;
-    protected CartPage cartPage;
-    private final static String URL = "https://www.saucedemo.com/inventory.html";
-    private final static String ITEM1 = "Sauce Labs Backpack";
-    private final static String PRICE_ITEM1 = "$29.99";
-    private final static String DESCRIPTION_ITEM1 = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
-    private final static String ITEM2 = "Sauce Labs Fleece Jacket";
-    private final static String PRICE_ITEM2 = "$49.99";
-    private final static String DESCRIPTION_ITEM2 = "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.";
-
     @Test
     public void item1PositiveTest() {
-        Assert.assertEquals(productsPage.getProductPrice(ITEM1), PRICE_ITEM1);
-        Assert.assertEquals(productsPage.getProductDescription(ITEM1), DESCRIPTION_ITEM1);
-        productsPage.openProductDetails(ITEM1);
-        Assert.assertFalse(Boolean.parseBoolean(productsPage.getCurrentPageUrl()), URL);
-        driver.navigate().back();
-        productsPage.clickAddToCartButton(ITEM1);
+        Assert.assertEquals(productsPage.getProductPrice(BACKPACK_ITEM_NAME), BACKPACK_ITEM_PRICE);
+        Assert.assertEquals(productsPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
+        productsPage.openProductDetails(BACKPACK_ITEM_NAME);
+        productsPage.clickBackToProducts();
+        productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME);
         cartPage.openShoppingCart();
-        Assert.assertEquals(cartPage.getProductPrice(ITEM1), PRICE_ITEM1);
-        Assert.assertEquals(cartPage.getProductDescription(ITEM1), DESCRIPTION_ITEM1);
+        Assert.assertEquals(cartPage.getProductPrice(BACKPACK_ITEM_NAME), BACKPACK_ITEM_PRICE);
+        Assert.assertEquals(cartPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
     }
 
     @Test
     public void item2PositiveTest() {
-        Assert.assertEquals(productsPage.getProductPrice(ITEM2), PRICE_ITEM2);
-        Assert.assertEquals(productsPage.getProductDescription(ITEM2), DESCRIPTION_ITEM2);
-        productsPage.openProductDetails(ITEM2);
-        Assert.assertFalse(Boolean.parseBoolean(productsPage.getCurrentPageUrl()), URL);
-        driver.navigate().back();
-        productsPage.clickAddToCartButton(ITEM2);
+        Assert.assertEquals(productsPage.getProductPrice(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_PRICE);
+        Assert.assertEquals(productsPage.getProductDescription(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_DESCRIPTION);
+        productsPage.openProductDetails(FLEECE_JACKET_ITEM_NAME);
+        productsPage.clickBackToProducts();
+        productsPage.clickAddToCartButton(FLEECE_JACKET_ITEM_NAME);
         cartPage.openShoppingCart();
-        Assert.assertEquals(cartPage.getProductPrice(ITEM2), PRICE_ITEM2);
-        Assert.assertEquals(cartPage.getProductDescription(ITEM2), DESCRIPTION_ITEM2);
+        Assert.assertEquals(cartPage.getProductPrice(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_PRICE);
+        Assert.assertEquals(cartPage.getProductDescription(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_DESCRIPTION);
     }
 }
 
