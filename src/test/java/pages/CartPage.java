@@ -20,6 +20,17 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isElementPresent(CONTINUE_SHOPPING_BUTTON);
+    }
+
+    @Override
+    public CartPage open() {
+        waitUntilElementVisible(CHECKOUT_BUTTON);
+        return this;
+    }
+
     public void openShoppingCart() {
         driver.findElement(SHOPPING_CART).click();
     }

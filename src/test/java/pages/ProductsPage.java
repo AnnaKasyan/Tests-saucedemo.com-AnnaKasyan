@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 public class ProductsPage extends BasePage {
 
     private final static By PRICE_LOCATOR = By.cssSelector(".inventory_item_price");
@@ -17,6 +15,17 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isPageOpened() {
+        return isElementPresent(SHOPPING_CART);
+    }
+
+    @Override
+    public ProductsPage open() {
+        waitUntilElementVisible(By.cssSelector(".peek"));
+        return this;
     }
 
     private WebElement getItemContainer(String productName) {

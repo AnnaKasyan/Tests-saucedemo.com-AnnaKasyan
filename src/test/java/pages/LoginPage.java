@@ -14,8 +14,15 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public boolean isPageOpened() {
+        return isElementPresent(LOGIN_BUTTON);
+    }
+
+    @Override
     public LoginPage open() {
         driver.get(URL);
+        waitUntilElementVisible(USERNAME_INPUT);
         return this;
     }
 

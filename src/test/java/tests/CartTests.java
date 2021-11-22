@@ -19,7 +19,6 @@ public class CartTests extends BaseTest {
 
     @BeforeMethod
     public void navigate() {
-        loginPage.open().login(USERNAME, PASSWORD);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
     }
@@ -32,6 +31,7 @@ public class CartTests extends BaseTest {
 
     @Test
     public void cartPositiveTest() {
+        loginPage.open().login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME);
         cartPage.openShoppingCart();
         Assert.assertTrue(cartPage.isProductNameDisplayed(BACKPACK_ITEM_NAME));
@@ -50,8 +50,10 @@ public class CartTests extends BaseTest {
     }
 
     @Test
-    public void cartPositiveTest2() {
-        productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME)
+    public void addAndRemoveItemsTest() {
+        int productsCount = loginPage.open()
+                .login(USERNAME, PASSWORD)
+                .clickAddToCartButton(BACKPACK_ITEM_NAME)
                 .clickAddToCartButton(FLEECE_JACKET_ITEM_NAME)
                 .clickAddToCartButton(ONESIE_ITEM_NAME)
                 .openShoppingCart()
@@ -61,6 +63,18 @@ public class CartTests extends BaseTest {
                 .clickAddToCartButton(BOLT_T_SHIRT_ITEM_NAME)
                 .openShoppingCart()
                 .getProductsCount();
-        Assert.assertEquals(cartPage.getProductsCount(), 2);
+        Assert.assertEquals(productsCount, 2);
+    }
+
+    @Test
+    public void addItemInCart() {
+        loginPage.open();
+        Assert.assertTrue(loginPage.isPageOpened(), "Login page should be opened");
+        loginPage.login(USERNAME, PASSWORD);
+        Assert.assertTrue(productsPage.isPageOpened(), "Products page should be opened");
+        productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME);
+        cartPage.openShoppingCart();
+        Assert.assertTrue(cartPage.isPageOpened(), "Cart page should be opened");
+        Assert.assertTrue(cartPage.isProductNameDisplayed(BACKPACK_ITEM_NAME));
     }
 }

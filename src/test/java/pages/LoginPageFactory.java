@@ -23,8 +23,15 @@ public class LoginPageFactory extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void open() {
+    @Override
+    public boolean isPageOpened() {
+        return false;
+    }
+
+    @Override
+    public LoginPage open() {
         driver.get(URL);
+        return new LoginPage(driver);
     }
 
     public void login(String username, String password) {
