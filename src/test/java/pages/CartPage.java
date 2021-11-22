@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class CartPage extends BasePage{
+public class CartPage extends BasePage {
 
     private final static By SHOPPING_CART = By.cssSelector(".shopping_cart_link");
     private final static By PRODUCT_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
@@ -24,17 +24,19 @@ public class CartPage extends BasePage{
         driver.findElement(SHOPPING_CART).click();
     }
 
-    public void clickContinueShoppingButton() {
+    public ProductsPage clickContinueShoppingButton() {
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
+        return new ProductsPage(driver);
     }
 
     public void clickCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
-    public void clickRemoveButton(String productName) {
+    public CartPage clickRemoveButton(String productName) {
         WebElement itemContainer = getItemContainer(productName);
         itemContainer.findElement(REMOVE_BUTTON).click();
+        return this;
     }
 
     private WebElement getItemContainer(String productName) {
@@ -57,9 +59,7 @@ public class CartPage extends BasePage{
     }
 
     public int getProductsCount() {
-            List<WebElement> itemCount = driver.findElements(By.cssSelector(".cart_item"));
-            int count = itemCount.size();
-            return itemCount.size();
-        }
-
+        List<WebElement> itemCount = driver.findElements(By.cssSelector(".cart_item"));
+        return itemCount.size();
+    }
 }

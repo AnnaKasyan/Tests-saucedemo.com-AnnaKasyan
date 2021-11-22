@@ -55,4 +55,14 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(loginPage.isErrorMessageDisplayed());
         Assert.assertEquals(loginPage.getErrorMessageText(), expected_error_message);
     }
+
+    @Test
+    public void loginWithEmptyFieldsTest() {
+        String errorMessage = loginPage.open()
+                .setUsernameInput("")
+                .setPasswordInput("")
+                .clickLoginButton()
+                .getErrorMessageText();
+        Assert.assertEquals(errorMessage, "Epic sadface: Username is required");
+    }
 }
