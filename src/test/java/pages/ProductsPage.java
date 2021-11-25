@@ -11,9 +11,21 @@ public class ProductsPage extends BasePage {
     private final static By PRODUCT_NAME_LOCATOR = By.cssSelector(".inventory_item_name");
     private final static By DESCRIPTION_LOCATOR = By.cssSelector(".inventory_item_desc");
     private final static By BACK_TO_PRODUCTS_BUTTON = By.cssSelector("button[id=back-to-products]");
+    private final static By SHOPPING_CART = By.cssSelector(".shopping_cart_link");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isPageOpened() {
+        return isElementPresent(SHOPPING_CART);
+    }
+
+    @Override
+    public ProductsPage open() {
+        waitUntilElementVisible(By.cssSelector(".peek"));
+        return this;
     }
 
     private WebElement getItemContainer(String productName) {
@@ -35,9 +47,15 @@ public class ProductsPage extends BasePage {
         return itemContainer.findElement(DESCRIPTION_LOCATOR).getText();
     }
 
-    public void clickAddToCartButton(String productName) {
+    public ProductsPage clickAddToCartButton(String productName) {
         WebElement itemContainer = getItemContainer(productName);
         itemContainer.findElement(ADD_TO_CART_BUTTON).click();
+        return this;
+    }
+
+    public CartPage openShoppingCart() {
+        driver.findElement(SHOPPING_CART).click();
+        return new CartPage(driver);
     }
 
     public void clickBackToProducts() {

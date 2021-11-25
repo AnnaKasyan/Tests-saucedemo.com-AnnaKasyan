@@ -21,8 +21,7 @@ public class ProductsTests extends BaseTest {
 
     @BeforeMethod
     public void navigate() {
-        loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage.open().login(USERNAME, PASSWORD);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
     }
