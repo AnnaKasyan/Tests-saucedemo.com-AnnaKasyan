@@ -7,6 +7,7 @@
             </run>
         </groups>
     <test name="Login and Cart tests">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.LoginTests"/>
             <class name="tests.CartTests"/>
