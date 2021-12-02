@@ -29,7 +29,7 @@ public class CartTests extends BaseTest {
     }
 
 
-    @Test
+    @Test (description="SauceDemo positive cart test",groups = {"Smoke"})
     public void cartPositiveTest() {
         loginPage.open().login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME);
@@ -49,7 +49,7 @@ public class CartTests extends BaseTest {
         Assert.assertNotEquals(productsPage.getCurrentPageUrl(), CART_PAGE_URL);
     }
 
-    @Test
+    @Test (description="SauceDemo add and remove items test")
     public void addAndRemoveItemsTest() {
         int productsCount = loginPage.open()
                 .login(USERNAME, PASSWORD)
@@ -66,8 +66,8 @@ public class CartTests extends BaseTest {
         Assert.assertEquals(productsCount, 2);
     }
 
-    @Test
-    public void addItemInCart() {
+    @Test (description="SauceDemo add item in cart test")
+    public void addItemInCartTest() {
         loginPage.open();
         Assert.assertTrue(loginPage.isPageOpened(), "Login page should be opened");
         loginPage.login(USERNAME, PASSWORD);
