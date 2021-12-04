@@ -22,25 +22,23 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println(String.format("Test '%s' succeed", result.getName()));
+        System.out.printf("Test '%s' succeed%n", result.getName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        int count = 1;
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File distFile = new File("target/screenshots/screenshot_" + result.getName() + ".png");
         try {
-            File distFile = new File("target/screenshots/screenshot_" + count + ".png");
             FileUtils.copyFile(file, distFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        count++;
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println(String.format("Test '%s' skipped", result.getName()));
+        System.out.printf("Test '%s' skipped%n", result.getName());
     }
 
     @Override

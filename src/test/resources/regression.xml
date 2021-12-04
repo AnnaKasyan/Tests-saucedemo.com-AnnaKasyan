@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Regression" parallel="classes">
-    <parameter name="browser" value="chrome"></parameter>
-    <parameter name="OS" value="windows"></parameter>
+    <parameter name="browser" value="chrome"/>
     <test name="Login tests">
         <classes>
             <class name="tests.LoginTests"/>

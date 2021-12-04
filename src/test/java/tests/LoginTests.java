@@ -12,7 +12,7 @@ public class LoginTests extends BaseTest {
     private final static String INVALID_USERNAME = "user";
     private final static String INVALID_PASSWORD = "1111";
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void navigate() {
         loginPage.open();
     }

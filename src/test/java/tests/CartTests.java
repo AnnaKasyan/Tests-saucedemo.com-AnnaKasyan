@@ -17,8 +17,8 @@ public class CartTests extends BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
 
-    @BeforeMethod
-    public void navigate() {
+    @BeforeMethod (alwaysRun = true)
+    public void initialize() {
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
     }
