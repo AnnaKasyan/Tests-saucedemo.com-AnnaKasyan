@@ -19,7 +19,7 @@ public class ProductsTests extends BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void navigate() {
         loginPage.open().login(USERNAME, PASSWORD);
         productsPage = new ProductsPage(driver);
