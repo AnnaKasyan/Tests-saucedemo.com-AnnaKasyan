@@ -59,5 +59,3 @@ public class TestListener implements ITestListener {
 }
 
 
-
-//Использую @Parametrs добавить конфигурируемый браузер во все .xml suites
