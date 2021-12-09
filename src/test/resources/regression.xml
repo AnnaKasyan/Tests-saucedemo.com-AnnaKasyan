@@ -4,13 +4,13 @@
     <parameter name="browser" value="chrome"/>
     <test name="Login tests">
         <classes>
-            <class name="tests.LoginTests"/>
+            <class name="tests.LoginTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Products and Cart tests">
         <classes>
-            <class name="tests.ProductsTests"/>
-            <class name="tests.CartTests"/>
+            <class name="tests.ProductsTest"/>
+            <class name="tests.CartTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

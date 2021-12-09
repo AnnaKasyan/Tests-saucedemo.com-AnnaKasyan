@@ -1,12 +1,13 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTests extends BaseTest {
+public class LoginTest extends BaseTest {
 
     private final static String LOGIN_PAGE_URL = "https://www.saucedemo.com/";
     private final static String INVALID_USERNAME = "user";
@@ -24,6 +25,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "SauceDemo login positive test", groups = {"Smoke"},retryAnalyzer = RetryAnalyzer.class)
+    @Description(value = "Login positive test")
     public void loginPositiveTest() {
         loginPage.login(USERNAME, PASSWORD);
         String expectedUrl = "https://www.saucedemo.com/inventory.html";

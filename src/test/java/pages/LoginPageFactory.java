@@ -1,6 +1,7 @@
 package pages;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,7 @@ public class LoginPageFactory extends BasePage {
         return new LoginPage(driver);
     }
 
+    @Step("Login to Saucedemo.com with username {username} and password {password}")
     public void login(String username, String password) {
         usernameInput.sendKeys(username);
         waitForPasswordInputClickable();

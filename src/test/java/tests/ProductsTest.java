@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.ProductsPage;
 
-public class ProductsTests extends BaseTest {
+public class ProductsTest extends BaseTest {
 
     private final static String BACKPACK_ITEM_NAME = "Sauce Labs Backpack";
     private final static String BACKPACK_ITEM_PRICE = "$29.99";
@@ -31,7 +31,7 @@ public class ProductsTests extends BaseTest {
         driver.manage().deleteAllCookies();
     }
 
-    @Test
+    @Test (description = "Implementation of various actions with Sauce Labs Backpack item")
     public void item1PositiveTest() {
         Assert.assertEquals(productsPage.getProductPrice(BACKPACK_ITEM_NAME), BACKPACK_ITEM_PRICE);
         Assert.assertEquals(productsPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
@@ -43,7 +43,7 @@ public class ProductsTests extends BaseTest {
         Assert.assertEquals(cartPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
     }
 
-    @Test
+    @Test (description = "Implementation of various actions with Sauce Labs Fleece Jacket item")
     public void item2PositiveTest() {
         Assert.assertEquals(productsPage.getProductPrice(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_PRICE);
         Assert.assertEquals(productsPage.getProductDescription(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_DESCRIPTION);

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class BuyTest extends BaseTest {
 
-    @Test
+    @Test (enabled = false)
     public void buyTest() {
         driver.get("https://www.saucedemo.com/");
         WebElement userName = driver.findElement(By.name("user-name"));

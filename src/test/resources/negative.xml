@@ -9,7 +9,7 @@
     <parameter name="browser" value="chrome"/>
     <test name="Login tests">
         <classes>
-            <class name="tests.LoginTests"/>
+            <class name="tests.LoginTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
