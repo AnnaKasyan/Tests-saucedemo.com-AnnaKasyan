@@ -1,12 +1,14 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+@Log4j2
 public class CartPage extends BasePage {
 
     private final static By SHOPPING_CART = By.cssSelector(".shopping_cart_link");
@@ -22,13 +24,11 @@ public class CartPage extends BasePage {
     }
 
     @Override
-    @Step("Shopping Cart page is opened")
     public boolean isPageOpened() {
         return isElementPresent(CONTINUE_SHOPPING_BUTTON);
     }
 
     @Override
-    @Step("Opening Shopping Cart page")
     public CartPage open() {
         waitUntilElementVisible(CHECKOUT_BUTTON);
         return this;
@@ -37,26 +37,31 @@ public class CartPage extends BasePage {
     @Step("Clicking Shopping Cart link")
     public void openShoppingCart() {
         driver.findElement(SHOPPING_CART).click();
+        log.info("click shopping cart link");
     }
 
     @Step("Clicking 'Continue shopping' button")
     public ProductsPage clickContinueShoppingButton() {
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
+        log.info("click continue shopping button");
         return new ProductsPage(driver);
     }
 
     @Step("Clicking 'Checkout' button")
     public void clickCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
+        log.info("click checkout button");
     }
 
     @Step("Clicking 'Remove' button")
     public CartPage clickRemoveButton(String productName) {
         WebElement itemContainer = getItemContainer(productName);
         itemContainer.findElement(REMOVE_BUTTON).click();
+        log.info("click remove button");
         return this;
     }
 
+    @Step("Product name: {}")
     private WebElement getItemContainer(String productName) {
         return driver.findElement(By.xpath("//div[contains(text(), '" + productName + "')]/ancestor::div[@class='cart_item_label']"));
     }

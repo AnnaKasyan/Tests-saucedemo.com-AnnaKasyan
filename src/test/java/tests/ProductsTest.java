@@ -1,6 +1,7 @@
 package tests;
 
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +20,7 @@ public class ProductsTest extends BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
 
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void navigate() {
         loginPage.open().login(USERNAME, PASSWORD);
         productsPage = new ProductsPage(driver);
@@ -31,7 +32,8 @@ public class ProductsTest extends BaseTest {
         driver.manage().deleteAllCookies();
     }
 
-    @Test (description = "Implementation of various actions with Sauce Labs Backpack item")
+    @Test(description = "Implementation of various actions with Sauce Labs Backpack item")
+    @Description(value = "Various actions with Sauce Labs Backpack item")
     public void item1PositiveTest() {
         Assert.assertEquals(productsPage.getProductPrice(BACKPACK_ITEM_NAME), BACKPACK_ITEM_PRICE);
         Assert.assertEquals(productsPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
@@ -43,7 +45,8 @@ public class ProductsTest extends BaseTest {
         Assert.assertEquals(cartPage.getProductDescription(BACKPACK_ITEM_NAME), BACKPACK_ITEM_DESCRIPTION);
     }
 
-    @Test (description = "Implementation of various actions with Sauce Labs Fleece Jacket item")
+    @Test(description = "Implementation of various actions with Sauce Labs Fleece Jacket item")
+    @Description(value = "Various actions with Sauce Labs Fleece Jacket item")
     public void item2PositiveTest() {
         Assert.assertEquals(productsPage.getProductPrice(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_PRICE);
         Assert.assertEquals(productsPage.getProductDescription(FLEECE_JACKET_ITEM_NAME), FLEECE_JACKET_ITEM_DESCRIPTION);

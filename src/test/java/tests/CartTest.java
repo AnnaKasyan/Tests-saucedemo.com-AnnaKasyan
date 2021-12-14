@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +18,7 @@ public class CartTest extends BaseTest {
     protected ProductsPage productsPage;
     protected CartPage cartPage;
 
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void initialize() {
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
@@ -29,7 +30,8 @@ public class CartTest extends BaseTest {
     }
 
 
-    @Test (description="SauceDemo positive cart test",groups = {"Smoke"})
+    @Test(description = "SauceDemo positive cart test", groups = {"Smoke"})
+    @Description(value = "Cart positive test")
     public void cartPositiveTest() {
         loginPage.open().login(USERNAME, PASSWORD);
         productsPage.clickAddToCartButton(BACKPACK_ITEM_NAME);
@@ -49,7 +51,8 @@ public class CartTest extends BaseTest {
         Assert.assertNotEquals(productsPage.getCurrentPageUrl(), CART_PAGE_URL);
     }
 
-    @Test (description="SauceDemo add and remove items test")
+    @Test(description = "SauceDemo add and remove items test")
+    @Description(value = "Add and remove items test (Chain Of Invocations pattern)")
     public void addAndRemoveItemsTest() {
         int productsCount = loginPage.open()
                 .login(USERNAME, PASSWORD)
@@ -66,7 +69,8 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(productsCount, 2);
     }
 
-    @Test (description="SauceDemo add item in cart test")
+    @Test(description = "SauceDemo add item in cart test")
+    @Description(value = "Add item in cart")
     public void addItemInCartTest() {
         loginPage.open();
         Assert.assertTrue(loginPage.isPageOpened(), "Login page should be opened");
