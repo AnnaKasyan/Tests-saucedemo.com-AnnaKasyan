@@ -31,12 +31,12 @@ public class LoginPage extends BasePage {
 
     @Step("Login to Saucedemo.com with username {username} and password {password}")
     public ProductsPage login(String username, String password) {
+        log.info("setting username");
         setUsernameInput(username);
-        log.info("input username");
+        log.info("setting password");
         setPasswordInput(password);
-        log.info("input password");
+        log.info("clicking login button");
         clickLoginButton();
-        log.info("click login button");
         return new ProductsPage(driver);
     }
 
