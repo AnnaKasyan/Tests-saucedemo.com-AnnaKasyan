@@ -1,15 +1,9 @@
 package tests;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-import java.io.File;
-import java.io.IOException;
 
 public class TestListener implements ITestListener {
 
@@ -27,13 +21,9 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File distFile = new File("target/screenshots/screenshot_" + result.getName() + ".png");
-        try {
-            FileUtils.copyFile(file, distFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.printf("Test '%s' failed%n", result.getName());
+        WebDriver driver = (WebDriver) (result.getTestContext().getAttribute("driver"));
+        AllureUtils.attachScreenshot(driver);
     }
 
     @Override

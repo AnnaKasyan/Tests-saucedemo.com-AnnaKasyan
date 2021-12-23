@@ -1,18 +1,19 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTests extends BaseTest {
+public class LoginTest extends BaseTest {
 
     private final static String LOGIN_PAGE_URL = "https://www.saucedemo.com/";
     private final static String INVALID_USERNAME = "user";
     private final static String INVALID_PASSWORD = "1111";
 
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void navigate() {
         loginPage.open();
     }
@@ -23,14 +24,16 @@ public class LoginTests extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test(description = "SauceDemo login positive test", groups = {"Smoke"},retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "SauceDemo login positive test", groups = {"Smoke"}, retryAnalyzer = RetryAnalyzer.class)
+    @Description(value = "Login positive test")
     public void loginPositiveTest() {
         loginPage.login(USERNAME, PASSWORD);
         String expectedUrl = "https://www.saucedemo.com/inventory.html";
         Assert.assertEquals(loginPage.getCurrentPageUrl(), expectedUrl);
     }
 
-    @Test(description = "SauceDemo login negative test",  groups = {"Negative"}, dataProvider = "Negative Login Test Data")
+    @Test(description = "SauceDemo login negative test", groups = {"Negative"}, dataProvider = "Negative Login Test Data")
+    @Description(value = "Login negative test with 4 various test data")
     public void loginNegativeTest(String username, String password, String expectedErrorMessage) {
         loginPage.login(username, password);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed());
@@ -48,6 +51,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "SauceDemo login with invalid fields test")
+    @Description(value = "Login test with invalid fields test")
     public void loginWithInvalidFieldsTest() {
         String expected_error_message = "Epic sadface: Username and password do not match any user in this service";
         loginPage.login(INVALID_USERNAME, INVALID_PASSWORD);
@@ -57,6 +61,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(description = "SauceDemo login with empty fields test", invocationCount = 4, threadPoolSize = 2)
+    @Description(value = "Login test with empty fields")
     public void loginWithEmptyFieldsTest() {
         String errorMessage = loginPage.open()
                 .setUsernameInput("")

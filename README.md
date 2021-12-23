@@ -42,8 +42,8 @@ that allows users to practice browser automation.
 <p> mvn clean test </p>
 
 <h4>Running a single test and running a set of methods in a single test class</h4>
-<p>1. mvn -Dtest=ProductsTests test</p>
-<p>2. mvn -Dtest=CartTests#addItemInCartTest test  </p>
-<p>3. mvn -Dtest=LoginTests#loginWithEmptyFieldsTest+loginWithInvalidFieldsTest test  </p> 
+<p>1. mvn -Dtest=ProductsTest test</p>
+<p>2. mvn -Dtest=CartTest#addItemInCartTest test  </p>
+<p>3. mvn -Dtest=LoginTest#loginWithEmptyFieldsTest+loginWithInvalidFieldsTest test  </p> 
 
 
