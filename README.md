@@ -17,7 +17,7 @@ that allows users to practice browser automation.
 
 <h2>Test suites</h2>
 <h3>Regression tests</h3>
-<p>This suite includes all tests from files: LoginTests, ProductsTests, CartTests. </p> 
+<p>This suite includes all tests from files: LoginTest, ProductsTest, CartTest. </p> 
 <h4>Running the suit</h4>
 <p> To execute the test suite, simply run: </p> 
 <p> mvn -Dtest=regression.xml test </p> 
