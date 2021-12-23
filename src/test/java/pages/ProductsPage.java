@@ -41,7 +41,6 @@ public class ProductsPage extends BasePage {
         WebElement itemContainer = getItemContainer(productName);
         log.info(String.format("clicking product name link - %s", productName));
         itemContainer.findElement(PRODUCT_NAME_LOCATOR).click();
-        log.info("click product name link");
     }
 
     @Step("Getting product price")
@@ -63,7 +62,6 @@ public class ProductsPage extends BasePage {
         WebElement itemContainer = getItemContainer(productName);
         log.info("clicking add to cart button");
         itemContainer.findElement(ADD_TO_CART_BUTTON).click();
-        log.info("click add to cart button");
         return this;
     }
 
@@ -71,7 +69,6 @@ public class ProductsPage extends BasePage {
     public CartPage openShoppingCart() {
         log.info("clicking shopping cart link");
         driver.findElement(SHOPPING_CART).click();
-        log.info("click shopping cart link");
         return new CartPage(driver);
     }
 
@@ -79,6 +76,5 @@ public class ProductsPage extends BasePage {
     public void clickBackToProducts() {
         log.info("clicking back to products button");
         driver.findElement(BACK_TO_PRODUCTS_BUTTON).click();
-        log.info("click back to products button");
     }
 }
