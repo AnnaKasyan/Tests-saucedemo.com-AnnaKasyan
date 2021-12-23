@@ -36,12 +36,14 @@ public class CartPage extends BasePage {
 
     @Step("Clicking Shopping Cart link")
     public void openShoppingCart() {
+        log.info("clicking shopping cart link");
         driver.findElement(SHOPPING_CART).click();
         log.info("click shopping cart link");
     }
 
     @Step("Clicking 'Continue shopping' button")
     public ProductsPage clickContinueShoppingButton() {
+        log.info("clicking continue shopping button");
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
         log.info("click continue shopping button");
         return new ProductsPage(driver);
@@ -49,6 +51,7 @@ public class CartPage extends BasePage {
 
     @Step("Clicking 'Checkout' button")
     public void clickCheckoutButton() {
+        log.info("clicking checkout button");
         driver.findElement(CHECKOUT_BUTTON).click();
         log.info("click checkout button");
     }
@@ -56,6 +59,7 @@ public class CartPage extends BasePage {
     @Step("Clicking 'Remove' button")
     public CartPage clickRemoveButton(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info("clicking remove button");
         itemContainer.findElement(REMOVE_BUTTON).click();
         log.info("click remove button");
         return this;
@@ -69,12 +73,14 @@ public class CartPage extends BasePage {
     @Step("Getting product price")
     public String getProductPrice(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info(String.format("getting %s price", productName));
         return itemContainer.findElement(PRICE_LOCATOR).getText();
     }
 
     @Step("Getting product description")
     public String getProductDescription(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info(String.format("getting %s description", productName));
         return itemContainer.findElement(DESCRIPTION_LOCATOR).getText();
     }
 

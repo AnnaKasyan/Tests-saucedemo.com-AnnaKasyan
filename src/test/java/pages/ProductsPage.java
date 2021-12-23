@@ -39,6 +39,7 @@ public class ProductsPage extends BasePage {
     @Step("Opening product details page")
     public void openProductDetails(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info(String.format("clicking product name link - %s", productName));
         itemContainer.findElement(PRODUCT_NAME_LOCATOR).click();
         log.info("click product name link");
     }
@@ -46,18 +47,21 @@ public class ProductsPage extends BasePage {
     @Step("Getting product price")
     public String getProductPrice(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info(String.format("getting %s price", productName));
         return itemContainer.findElement(PRICE_LOCATOR).getText();
     }
 
     @Step("Getting product description")
     public String getProductDescription(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info(String.format("getting %s description", productName));
         return itemContainer.findElement(DESCRIPTION_LOCATOR).getText();
     }
 
     @Step("Clicking 'Add to cart' button")
     public ProductsPage clickAddToCartButton(String productName) {
         WebElement itemContainer = getItemContainer(productName);
+        log.info("clicking add to cart button");
         itemContainer.findElement(ADD_TO_CART_BUTTON).click();
         log.info("click add to cart button");
         return this;
@@ -65,6 +69,7 @@ public class ProductsPage extends BasePage {
 
     @Step("Clicking Shopping Cart link")
     public CartPage openShoppingCart() {
+        log.info("clicking shopping cart link");
         driver.findElement(SHOPPING_CART).click();
         log.info("click shopping cart link");
         return new CartPage(driver);
@@ -72,6 +77,7 @@ public class ProductsPage extends BasePage {
 
     @Step("Clicking 'Back to products' button")
     public void clickBackToProducts() {
+        log.info("clicking back to products button");
         driver.findElement(BACK_TO_PRODUCTS_BUTTON).click();
         log.info("click back to products button");
     }
